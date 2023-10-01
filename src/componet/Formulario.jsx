@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 
 
-function Formulario({ RegistroExit,CamposVacio }) {
+function Formulario({ RegistroExit, CamposVacio }) {
     const [name, setName] = useState('');
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,21 +28,20 @@ function Formulario({ RegistroExit,CamposVacio }) {
     }
 
     const CambioSubmit = (event) => {
-        var mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
         if (!name || !mail || !password || !confirmarPassword) {
             CamposVacio();
         }
-        else  if(password != confirmarPassword) {
-        alert ("Contraseña no Coinciden")
+        else if (password != confirmarPassword) {
+            alert("Contraseña no Coinciden")
         }
-        else
-        if (!mail.match(mailRegex)) {
-            alert ("Formato de Correo no Valido")
+        else if (!mail.match(mailRegex)) {
+            alert("Formato de Correo no Valido")
         }
         else {
             RegistroExit();
-        
+
         }
         event.preventDefault()
 
@@ -51,7 +50,7 @@ function Formulario({ RegistroExit,CamposVacio }) {
     return (
         <form onSubmit={CambioSubmit}>
             <Form.Group className="mb-3">
-                <Form.Control 
+                <Form.Control
                     type="text"
                     id="name"
                     value={name}
@@ -61,7 +60,7 @@ function Formulario({ RegistroExit,CamposVacio }) {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Control 
+                <Form.Control
                     type="mail"
                     id="mail"
                     value={mail}
@@ -71,7 +70,7 @@ function Formulario({ RegistroExit,CamposVacio }) {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Control 
+                <Form.Control
                     type="password"
                     id="password"
                     value={password}
@@ -81,7 +80,7 @@ function Formulario({ RegistroExit,CamposVacio }) {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Control 
+                <Form.Control
                     type="password"
                     id="confirmarPassword"
                     value={confirmarPassword}
@@ -89,8 +88,9 @@ function Formulario({ RegistroExit,CamposVacio }) {
                     onChange={CambioConfirmarPassword}
                 />
             </Form.Group>
-
-            <Button type="submit">Registrarse</Button>
+            <Form.Group className="mb-3">
+                < Button className='btn' type="submit">Registrarse</Button>
+            </Form.Group>
         </form>
     );
 }
